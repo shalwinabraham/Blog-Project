@@ -1,0 +1,109 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Create Blog Button at the top-right -->
+    <div class="d-flex justify-content-end mb-4">
+        <a class="create" href="{% url 'create' %}">Create Blog</a>
+    </div>
+    <!-- Title -->
+    <h1 class="all-blogs-title">All Blogs</h1>
+    <!-- Blog Cards -->
+    <div class="row d-flex justify-content-center mt-4">
+        {% for i in dict_list %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden;">
+                {% if i.image %}
+                <img src="{{ i.image.url }}" alt="{{ i.title }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body text-center p-4">
+                    <h5 class="card-title" style="color: #333; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.25rem;">
+                        {{ i.title }}
+                    </h5>
+                    <p class="text-muted" style="font-size: 0.9rem; font-style: italic;">By {{ i.author }}</p>
+                    <a href="{% url 'detail' i.id %}" class="btn btn-dark bt1 px-4 py-2 mt-3">
+                        View More
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Custom CSS for Black and White Theme -->
+<style>
+    body {
+        background: linear-gradient(135deg, #1e1f1e, #b6bcbb); /* Black to white gradient */
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333; /* Default text color */
+    }
+
+    .all-blogs-title {
+        font-family: 'Georgia', serif;
+        text-align: center;
+        color: #e7e7e7; /* Dark text color */
+        font-weight: 700;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #d4af37;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+        position: relative;
+        top: -70px;
+    }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        top: -70px;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .create {
+        padding: 10px 20px;
+        background-color: #292929;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .create:hover {
+        background-color: #7b7777;
+    }
+
+    .btn-dark {
+        background-color: #252525;
+        border: none;
+    }
+
+    .btn-dark:hover {
+        background-color: #918a8a;
+    }
+
+    .bt1 {
+        border-radius: 8px;
+        background-color: #313131;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .bt1:hover {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+</style>
+{% endblock %}

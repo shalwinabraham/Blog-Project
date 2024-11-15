@@ -1,0 +1,43 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card shadow border-0 rounded-4 p-4" style="width: 50%; background-color: #f9f9f9;">
+        <h3 class="text-center mb-4" style="color: #333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Update Details</h3>
+        <form action="" method="post" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table borderless mb-3">
+                {{ form.as_table }}
+            </table>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark btn-lg px-5 py-2 shadow-sm" style="background-color: #333; border: none; border-radius: 8px; color: white; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease;">
+                    SAVE
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Custom CSS to style the table, button, and fonts -->
+<style>
+    body {
+        background: linear-gradient(135deg, #1e1f1e, #b6bcbb); /* Black to white gradient */
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        height: 1100px; /* Default text color */
+    }
+    .table td, .table th {
+        border: none !important;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        color: #555;
+    }
+    .btn-dark:hover {
+        background-color: #444;
+    }
+</style>
+
+{% endblock %}

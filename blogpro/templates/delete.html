@@ -1,0 +1,46 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="card shadow-sm border-0 mx-auto p-4" style="max-width: 500px; background-color: #1c1c1e; border-radius: 12px;">
+        <h3 class="mb-4" style="color: #d4af37; font-family: 'Georgia', serif; font-weight: 600;">Delete Confirmation</h3>
+        
+        <p style="color: #fff; font-size: 1.1rem;">Do you want to delete the blog titled:</p>
+        <p style="color: #d4af37; font-size: 1.25rem; font-style: italic;">{{ dict_detail.title }}</p>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mt-4">
+                <button type="submit" class="btn btn-danger px-4 py-2" style="border-radius: 8px; font-weight: 500; font-size: 1rem;">
+                    Yes, Delete
+                </button>
+                <a href="{% url 'list' %}" class="btn btn-success px-4 py-2 ml-2" style="border-radius: 8px; font-weight: 500; font-size: 1rem;">
+                    No, Go Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Custom CSS for Premium Styling -->
+<style>
+    body {
+        background: linear-gradient(135deg, #1e1f1e, #b6bcbb); /* Black to white gradient */
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        height: 700px; /* Default text color */
+    }
+    .btn-danger, .btn-success {
+        transition: background-color 0.3s ease;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+    }
+</style>
+
+{% endblock %}

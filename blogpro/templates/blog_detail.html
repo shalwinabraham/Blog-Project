@@ -1,0 +1,96 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">  <!-- Increased column width -->
+      <div class="card border-0 shadow-sm rounded-0" style="background: #f8f9fa;">
+
+        <!-- Image Section -->
+        {% if dict_detail.image %}
+          <img src="{{ dict_detail.image.url }}" alt="{{ dict_detail.title }}" 
+               class="card-img-top" 
+               style="object-fit: cover; height: 200px; border-bottom: 4px solid #333;">
+        {% endif %}
+
+        <div class="card-body p-3">  <!-- Reduced padding -->
+          <!-- Title -->
+          <h2 class="card-title mb-2 text-center" 
+              style="font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #333;">  <!-- Slightly larger font -->
+            {{ dict_detail.title }}
+          </h2>
+          <!-- Content -->
+          <p class="card-text mb-1" 
+             style="font-size: 0.85rem; color: #555; font-family: 'Poppins', sans-serif;">
+            <strong>Content:</strong> {{ dict_detail.content }}
+          </p>
+          <!-- Publication Date -->
+          <p class="card-text mb-1" 
+             style="font-size: 0.85rem; color: #555; font-family: 'Poppins', sans-serif;">
+            <strong>Publication Date:</strong> {{ dict_detail.publication_date }}
+          </p>
+          <!-- Author -->
+          <p class="card-text mb-3" 
+             style="font-size: 0.85rem; color: #555; font-family: 'Poppins', sans-serif;">
+            <strong>Author:</strong> {{ dict_detail.author }}
+          </p>
+
+          <!-- Back to Home Link -->
+          <div class="mb-2">
+            <a href="{% url 'list' %}" style="font-size: 0.85rem; font-family: 'Poppins', sans-serif; color: #007bff;">
+              Back to Home
+            </a>
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <a href="{% url 'update' dict_detail.id %}" class="btn btn-dark rounded-0 px-3 py-2" 
+               style="font-size: 0.85rem; font-family: 'Poppins', sans-serif;">
+              Edit
+            </a>
+            <a href="{% url 'delete' dict_detail.id %}" class="btn btn-outline-dark rounded-0 px-3 py-2" 
+               style="font-size: 0.85rem; font-family: 'Poppins', sans-serif;">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Compact Styling -->
+<style>
+  body {
+        background: linear-gradient(135deg, #1e1f1e, #b6bcbb); /* Black to white gradient */
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        height: 700px; /* Default text color */
+    }
+  .container {
+    max-width: 800px;
+    border-radius: 20px;   /* Increased max-width for the container */
+  }
+  .card-title {
+    line-height: 1.1; 
+    border-radius: 20px; 
+    /* Reduced line-height */
+  }
+  .card-body {
+    background: linear-gradient(135deg, #fafafa, #ececec);
+    border-radius: 20px; 
+  }
+  .btn-dark:hover, .btn-outline-dark:hover {
+    background: #1c1c1c !important;
+    border-color: #1c1c1c !important;
+    color: white !important;
+  }
+</style>
+
+<!-- Link to Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+{% endblock %}
